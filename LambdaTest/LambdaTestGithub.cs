@@ -36,15 +36,6 @@ namespace LambdaTest
 
             AddBtn().Click();
 
-            //Thread.Sleep(2000);
-
-            //foreach (IWebElement li in TodoList()) {
-            //    if (li.Text.Equals(bDay)){
-            //        listItem = li;
-            //        li.Click();
-            //    }
-            //}
-
             listItem = TodoList().Last();
             listItem.FindElement(By.TagName("input")).Click();
 
