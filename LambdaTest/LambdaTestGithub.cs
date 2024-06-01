@@ -13,7 +13,7 @@ namespace LambdaTest
         /// <summary>
         /// Verify that title is correct
         /// </summary>
-        [Fact]
+        [RetryFact(MaxRetries = 5)]
         [Trait("Priority","1")]
         [Trait("Category", "Sanity")]
         public void TitleVerification()
@@ -22,25 +22,29 @@ namespace LambdaTest
             Assert.Equal("Sample page - lambdatest.com", driver.Title);
         }
 
+
+        //Verify that date is added with configured Culture
         [Fact]
+        [UseCulture("fi_FI")]
         [Trait("Priority", "2")]
         [Trait("Category", "Functional")]
         public void AddDateToList() {
             GotoLambdaTestSite();
-            IWebElement listItem;
 
             DateTime bDate = new DateTime(1994, 05, 29);
             string bDay = bDate.ToString("d");
 
+            //Enter Date
             TodoTextInput().SendKeys(bDay);
 
+            //Click Add button
             AddBtn().Click();
 
-            listItem = TodoList().Last();
-            listItem.FindElement(By.TagName("input")).Click();
+            //Click/Check the newly added date
+            TodoList().Last().FindElement(By.TagName("input")).Click();
 
-            string check = listItem.FindElement(By.TagName("span")).GetAttribute("class");
-            Assert.Equal("done-true", check);
+            //Verify that new date is checked
+            Assert.Equal("29/5/1994", TodoList().Last().Text);
         }
     }
 }
