@@ -38,6 +38,15 @@ namespace LambdaTest
             return driver.FindElement(By.ClassName("list-unstyled")).FindElements(By.TagName("li")).ToList();
         }
 
+        public IWebElement GetAppName() {
+            return driver.FindElement(By.TagName("h2"));
+        }
+
+        public IWebElement GetWrongAppName()
+        {
+            return driver.FindElement(By.TagName("h5"));
+        }
+
         #endregion
         public void Dispose()
         {

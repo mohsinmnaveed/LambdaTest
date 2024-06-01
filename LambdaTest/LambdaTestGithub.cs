@@ -1,5 +1,6 @@
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using Xunit;
 
 namespace LambdaTest
 {
@@ -46,5 +47,29 @@ namespace LambdaTest
             //Verify that new date is checked
             Assert.Equal("29/5/1994", TodoList().Last().Text);
         }
+
+
+        //Verify the app name (Skippable)
+        [Fact(Skip = "Not important")]
+        [Trait("Priority", "3")]
+        [Trait("Category", "UI")]
+        public void CheckAppName()
+        {
+            GotoLambdaTestSite();
+
+            Assert.Equal("LambdaTest Sample App", GetAppName().Text);
+        }
+
+        //Verify the app name (Skippable with NuGet Package)
+        [SkippableFact(typeof(NoSuchElementException))]
+        [Trait("Priority", "3")]
+        [Trait("Category", "UI")]
+        public void CheckAppNameSkippable()
+        {
+            GotoLambdaTestSite();
+
+            Assert.Equal("LambdaTest Sample App", GetWrongAppName().Text);
+        }
+
     }
 }
