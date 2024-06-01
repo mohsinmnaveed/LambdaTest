@@ -8,14 +8,14 @@ namespace LambdaTest
     /// <summary>
     /// Testing Lambdatest sample app : https://lambdatest.github.io/sample-todo-app/
     /// </summary>
+    [TestCaseOrderer("LambdaTest.PriorityOrderer", "LambdaTest")]
     public class LambdaTestGithub : BaseClass
     {
 
         /// <summary>
         /// Verify that title is correct
         /// </summary>
-        [RetryFact(MaxRetries = 5)]
-        [Trait("Priority","1")]
+        [RetryFact(MaxRetries = 5), TestPriority(1)]
         [Trait("Category", "Sanity")]
         public void TitleVerification()
         {
@@ -25,9 +25,8 @@ namespace LambdaTest
 
 
         //Verify that date is added with configured Culture
-        [Fact]
+        [Fact, TestPriority(0)]
         [UseCulture("fi_FI")]
-        [Trait("Priority", "2")]
         [Trait("Category", "Functional")]
         public void AddDateToList() {
             GotoLambdaTestSite();
@@ -50,8 +49,7 @@ namespace LambdaTest
 
 
         //Verify the app name (Skippable)
-        [Fact(Skip = "Not important")]
-        [Trait("Priority", "3")]
+        [Fact(Skip = "Not important"), TestPriority(2)]
         [Trait("Category", "UI")]
         public void CheckAppName()
         {
@@ -61,8 +59,7 @@ namespace LambdaTest
         }
 
         //Verify the app name (Skippable with NuGet Package)
-        [SkippableFact(typeof(NoSuchElementException))]
-        [Trait("Priority", "3")]
+        [SkippableFact(typeof(NoSuchElementException)), TestPriority(3)]
         [Trait("Category", "UI")]
         public void CheckAppNameSkippable()
         {

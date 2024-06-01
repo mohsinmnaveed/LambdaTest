@@ -1,0 +1,48 @@
+<Playlist Version="2.0">
+  <Rule Name="Includes" Match="Any">
+    <Rule Match="All">
+      <Property Name="Solution" />
+      <Rule Match="Any">
+        <Rule Match="All">
+          <Property Name="Project" Value="LambdaTest" />
+          <Rule Match="Any">
+            <Rule Match="All">
+              <Property Name="Namespace" Value="LambdaTest" />
+              <Rule Match="Any">
+                <Rule Match="All">
+                  <Property Name="Class" Value="LambdaTestGithub" />
+                  <Rule Match="Any">
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="LambdaTest.LambdaTestGithub.TitleVerification" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="LambdaTest.LambdaTestGithub.TitleVerification" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="LambdaTest.LambdaTestGithub.AddDateToList" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="LambdaTest.LambdaTestGithub.AddDateToList" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="LambdaTest.LambdaTestGithub.CheckAppName" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="LambdaTest.LambdaTestGithub.CheckAppName" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="LambdaTest.LambdaTestGithub.CheckAppNameSkippable" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="LambdaTest.LambdaTestGithub.CheckAppNameSkippable" />
+                      </Rule>
+                    </Rule>
+                  </Rule>
+                </Rule>
+              </Rule>
+            </Rule>
+          </Rule>
+        </Rule>
+      </Rule>
+    </Rule>
+  </Rule>
+</Playlist>
