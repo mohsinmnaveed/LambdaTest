@@ -20,11 +20,16 @@ namespace LambdaTest
         public IWebDriver driver;
         WebDriverWait wait;
         Actions action;
+        ChromeOptions options = new ChromeOptions();
 
         public TodoMVCBaseClass() 
         {
             new DriverManager().SetUpDriver(new ChromeConfig(), VersionResolveStrategy.MatchingBrowser);
-            driver = new ChromeDriver();
+
+            //Resolved: HTTP request to the remote WebDriver server for URL http://localhost:52847/….. timed out after 60 seconds
+            options.AddArgument("no-sandobox");
+
+            driver = new ChromeDriver(options);
             wait = new WebDriverWait(driver, TimeSpan.FromSeconds(TIME_TO_WAIT_FOR_ELEMENT));
             driver.Manage().Window.Maximize();
             action = new Actions(driver);
