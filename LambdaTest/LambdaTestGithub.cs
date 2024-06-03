@@ -9,7 +9,7 @@ namespace LambdaTest
     /// Testing Lambdatest sample app : https://lambdatest.github.io/sample-todo-app/
     /// </summary>
     [TestCaseOrderer("LambdaTest.PriorityOrderer", "LambdaTest")]
-    public class LambdaTestGithub : BaseClass
+    public class LambdaTestGithub : LambdaBaseClass
     {
 
         /// <summary>

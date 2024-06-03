@@ -11,11 +11,11 @@ using WebDriverManager.Helpers;
 
 namespace LambdaTest
 {
-    public class BaseClass : IDisposable
+    public class LambdaBaseClass : IDisposable
     {
         protected IWebDriver driver;
 
-        protected BaseClass() {
+        protected LambdaBaseClass() {
             new DriverManager().SetUpDriver(new ChromeConfig(), VersionResolveStrategy.MatchingBrowser);
             driver = new ChromeDriver();
             driver.Manage().Window.Maximize();
