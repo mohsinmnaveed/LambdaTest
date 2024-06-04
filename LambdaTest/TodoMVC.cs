@@ -22,7 +22,7 @@ namespace LambdaTest
         [InlineData("Marionette.js")]
         public void VerifyItemsAreAddedInReact(string appName)
         {
-            GotoTotoMVCSite();
+            GotoTodoMVCSite();
             GoToApp(appName);
             AddTodoItem("Wash Car");
             VerifyItemAdded("Wash Car");
