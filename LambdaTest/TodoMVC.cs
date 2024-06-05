@@ -8,7 +8,7 @@ namespace LambdaTest
     {
         [Theory]
         //[InlineData("Lit")]
-        [InlineData("React")]
+        //[InlineData("React")]
         //[InlineData("React Redux")]
         //[InlineData("Vue.js")]
         //[InlineData("Preact")]
@@ -19,7 +19,7 @@ namespace LambdaTest
         //[InlineData("Dojo")]
         //[InlineData("Knockback.js")]
         //[InlineData("CanJS")]
-        //[InlineData("Polymer")]
+        [InlineData("Polymer")]
         //[InlineData("Mithril")]
         //[InlineData("Marionette.js")]
         public void VerifyItemsAreAddedInReact(string appName)
@@ -27,9 +27,11 @@ namespace LambdaTest
             GotoTodoMVCSite();
             GoToApp(appName);
             AddTodoItem("Wash Car");
+            AddTodoItem("Plan daily dose");
             VerifyItemAdded("Wash Car");
+            VerifyNumberOfItems(2);
+            CheckTodoItem("Wash Car");
             VerifyNumberOfItems(1);
-            //CheckTodoItem("Wash Car");
         }
 
     }

@@ -1,5 +1,6 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.UI;
 using SeleniumExtras.WaitHelpers;
@@ -19,19 +20,20 @@ namespace LambdaTest
         public TodoMVCBaseClass()
         {
 
-            //new DriverManager().SetUpDriver(new FirefoxConfig(), VersionResolveStrategy.Latest);
-            //driver = new FirefoxDriver();
+            new DriverManager().SetUpDriver(new FirefoxConfig(), VersionResolveStrategy.Latest);
+            driver = new FirefoxDriver();
 
-            ChromeOptions options = new ChromeOptions();
-            //Resolved: HTTP request to the remote WebDriver server for URL http://localhost:52847/….. timed out after 60 seconds
-            options.AddArgument("--start-maximized"); // open Browser in maximized mode
-            //options.AddArguments("disable-infobars"); // disabling infobars
-            //options.AddArguments("--disable-extensions"); // disabling extensions
-            //options.AddArguments("--disable-gpu"); // applicable to windows os only
-            //options.AddArguments("--disable-dev-shm-usage"); // overcome limited resource problems
-            options.AddArgument("--no-sandbox"); // Bypass OS security model
-            new DriverManager().SetUpDriver(new ChromeConfig(), VersionResolveStrategy.MatchingBrowser);
-            driver = new ChromeDriver(options);
+            //ChromeOptions options = new ChromeOptions();
+            ////Resolved: HTTP request to the remote WebDriver server for URL http://localhost:52847/….. timed out after 60 seconds
+            //options.AddArgument("--start-maximized"); // open Browser in maximized mode
+            ////options.AddArguments("disable-infobars"); // disabling infobars
+            ////options.AddArguments("--disable-extensions"); // disabling extensions
+            ////options.AddArguments("--disable-gpu"); // applicable to windows os only
+            ////options.AddArguments("--disable-dev-shm-usage"); // overcome limited resource problems
+            //options.AddArgument("--no-sandbox"); // Bypass OS security model
+            //new DriverManager().SetUpDriver(new ChromeConfig(), VersionResolveStrategy.MatchingBrowser);
+            //driver = new ChromeDriver(options);
+
             driver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(180);
             wait = new WebDriverWait(driver, TimeSpan.FromSeconds(TIME_TO_WAIT_FOR_ELEMENT));
             action = new Actions(driver);
@@ -75,7 +77,7 @@ namespace LambdaTest
         {
             try
             {
-                wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath($"//label[text()='{v}']/preceding-sibling::input]"))).Click();
+                wait.Until(ExpectedConditions.ElementExists(By.XPath($"//label[text()='{v}']/preceding-sibling::input"))).Click();
             }
             catch (Exception ex)
             {
@@ -181,7 +183,7 @@ namespace LambdaTest
         {
             try
             {
-                return wait.Until(ExpectedConditions.ElementExists(By.CssSelector("span[class='todo-count']")));
+                return wait.Until(ExpectedConditions.ElementExists(By.CssSelector("span[class*='todo-count']")));
             }
             catch (Exception ex)
             {
