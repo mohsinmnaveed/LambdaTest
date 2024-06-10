@@ -22,7 +22,7 @@ namespace LambdaTest
         [InlineData("Polymer")]
         //[InlineData("Mithril")]
         //[InlineData("Marionette.js")]
-        public void VerifyItemsAreAddedInReact(string appName)
+        public void VerifyItemsAddedInTodoList(string appName)
         {
             GotoTodoMVCSite();
             GoToApp(appName);
